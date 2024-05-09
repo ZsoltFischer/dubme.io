@@ -4,30 +4,31 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-/// All the supported routes in the app.
-/// By using an enum, we route by name using this syntax:
-/// ```dart
-/// context.goNamed(AppRoute.orders.name)
-/// ```
-enum AppRoute {
-  todos,
-  statistics,
-  profile,
-}
-
-final _appShellNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'appShellNavigatorKey');
-
 final _todosNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'todosNavigatorKey');
 
 final _statisticsNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'statisticsNavigatorKey');
 
+/// All the supported routes in the app.
+/// By using an enum, we route by name using this syntax:
+/// ```dart
+/// context.goNamed(AppRoute.todos.path)
+/// ```
+enum AppRoutes {
+  todos(path: '/'),
+  statistics(path: '/statistics'),
+  profile(path: '/profile');
+
+  const AppRoutes({required this.path});
+
+  final String path;
+}
+
 class TodoAppRoutes {
   /// Page route for Todos.
   static final todos = GoRoute(
-    path: '/',
+    path: AppRoutes.todos.path,
     pageBuilder: (context, state) => const CupertinoPage(
       child: TodosPage(),
     ),
@@ -35,7 +36,7 @@ class TodoAppRoutes {
 
   /// Statistics page route.
   static final statistics = GoRoute(
-    path: '/statistics',
+    path: AppRoutes.statistics.path,
     pageBuilder: (context, state) => CupertinoPage(
       child: Container(
         color: Colors.red,
@@ -45,7 +46,7 @@ class TodoAppRoutes {
 
   /// Profile page route. Not part of the main shell
   static final profile = GoRoute(
-    path: '/profile',
+    path: AppRoutes.profile.path,
     pageBuilder: (context, state) => const CupertinoPage(
       child: TodosPage(),
     ),
