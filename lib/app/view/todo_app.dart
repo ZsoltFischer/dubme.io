@@ -1,5 +1,7 @@
 import 'package:dubmeio/app/theme.dart';
+import 'package:dubmeio/app/view/widgets/app_bloc_providers.dart';
 import 'package:dubmeio/l10n/arb/app_localizations.dart';
+import 'package:dubmeio/routing/auth_redirecter.dart';
 import 'package:dubmeio/routing/routes.dart';
 import 'package:dubmeio_widgets/dubmeio_widgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,11 +22,17 @@ class TodoApp extends StatelessWidget {
       ],
     );
 
-    return CupertinoApp.router(
-      theme: TodoAppTheme.cupertinoThemeData,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      routerConfig: routerBuilder.buildRouter(),
+    return AppBlocProviders(
+      child: AuthRedirecter(
+        child: SafeArea(
+          child: CupertinoApp.router(
+            theme: TodoAppTheme.cupertinoThemeData,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            routerConfig: routerBuilder.buildRouter(),
+          ),
+        ),
+      ),
     );
   }
 }

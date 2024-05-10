@@ -8,10 +8,12 @@ environment:
 
 dependencies:
   bloc: ^8.1.3
+  cupertino_icons: ^1.0.8
   dubmeio_utils:
     path: packages/dubmeio_utils
   dubmeio_widgets:
     path: packages/dubmeio_widgets
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.4
@@ -21,6 +23,8 @@ dependencies:
   go_router: ^14.0.2
   intl: ^0.18.1
   provider: ^6.1.2
+  sliver_tools: ^0.2.12
+  uuid: ^4.4.0
 
 dev_dependencies:
   bloc_test: ^9.1.6

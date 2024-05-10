@@ -1,7 +1,6 @@
 import 'package:dubmeio/app/view/widgets/scaffold_with_nested_navigation.dart';
-import 'package:dubmeio/features/todos/view/todos_page.dart';
+import 'package:dubmeio/features/todos/view/view.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final _todosNavigatorKey =
@@ -37,18 +36,15 @@ class TodoAppRoutes {
   /// Statistics page route.
   static final statistics = GoRoute(
     path: AppRoutes.statistics.path,
-    pageBuilder: (context, state) => CupertinoPage(
-      child: Container(
-        color: Colors.red,
-      ),
-    ),
+    pageBuilder: (context, state) =>
+        const CupertinoPage(child: StatisticsPage()),
   );
 
   /// Profile page route. Not part of the main shell
   static final profile = GoRoute(
     path: AppRoutes.profile.path,
     pageBuilder: (context, state) => const CupertinoPage(
-      child: TodosPage(),
+      child: ProfilePage(),
     ),
   );
 

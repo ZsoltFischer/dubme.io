@@ -1,5 +1,5 @@
 /// Layout breakpoints used in the app.
-class Breakpoint {
+class Breakpoints {
   /// Desktop breakpoint.
   static const double desktop = 900;
 

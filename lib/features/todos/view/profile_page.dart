@@ -1,13 +1,12 @@
-import 'package:dubmeio/features/todos/view/widgets/sliver_todo_lists.dart';
 import 'package:dubmeio/routing/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-// A page that displays the user's `todo` list.
-class TodosPage extends StatelessWidget {
-  /// Creates a [TodosPage].
-  const TodosPage({super.key});
+/// A page that displays the user profile.
+class ProfilePage extends StatelessWidget {
+  /// Creates a [ProfilePage].
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +16,26 @@ class TodosPage extends StatelessWidget {
         slivers: [
           CupertinoSliverNavigationBar(
             backgroundColor: CupertinoColors.systemGroupedBackground,
-            heroTag: 'todoPageHeroTag',
-            largeTitle: const Text('Todo Page'),
+            heroTag: 'profilePageHeroTag',
+            largeTitle: const Text('Profile Page'),
             leading: IconButton(
-              icon: const Icon(CupertinoIcons.person),
+              icon: const Icon(CupertinoIcons.back),
               onPressed: () => GoRouter.of(context).go(
-                TodoAppRoutes.profile.path,
+                TodoAppRoutes.todos.path,
               ),
             ),
             border: Border.all(color: Colors.transparent),
           ),
-          const SliverTodoLists(),
+          SliverToBoxAdapter(
+            child: Center(
+              child: Text(
+                'Profile Page (routing test)',
+                style: CupertinoTheme.of(context)
+                    .textTheme
+                    .dateTimePickerTextStyle,
+              ),
+            ),
+          ),
         ],
       ),
     );

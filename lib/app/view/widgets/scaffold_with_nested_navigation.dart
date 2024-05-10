@@ -1,3 +1,4 @@
+import 'package:dubmeio/app/view/widgets/todo_app_navigation_rail.dart';
 import 'package:dubmeio_utils/dubmeio_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,25 +23,44 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: CupertinoTabScaffold(
-        tabBar: CupertinoTabBar(
-          currentIndex: navigationShell.currentIndex,
-          onTap: _goBranch,
-          items: [
-            BottomNavigationBarItem(
-              label: 'Todos'.hardcoded,
-              icon: const Icon(CupertinoIcons.calendar),
-            ),
-            BottomNavigationBarItem(
-              label: 'Statistics'.hardcoded,
-              icon: const Icon(Icons.fitness_center_outlined, weight: 10),
-            ),
-          ],
-        ),
-        tabBuilder: (_, __) => TapRegion(
-          child: navigationShell,
-          onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
-        ),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.smallest.width <= Breakpoints.tablet) {
+            return CupertinoTabScaffold(
+              tabBar: CupertinoTabBar(
+                currentIndex: navigationShell.currentIndex,
+                onTap: _goBranch,
+                items: [
+                  BottomNavigationBarItem(
+                    label: 'Todos'.hardcoded,
+                    icon: const Icon(CupertinoIcons.calendar),
+                  ),
+                  BottomNavigationBarItem(
+                    label: 'Statistics'.hardcoded,
+                    icon: const Icon(Icons.fitness_center_outlined, weight: 10),
+                  ),
+                ],
+              ),
+              tabBuilder: (_, __) => TapRegion(
+                child: navigationShell,
+                onTapOutside: (_) =>
+                    FocusManager.instance.primaryFocus?.unfocus(),
+              ),
+            );
+          }
+          return Row(
+            children: [
+              TodoAppNavigationRail(
+                navigationShell: navigationShell,
+                goBranch: _goBranch,
+              ),
+              const VerticalDivider(thickness: 1, width: 1),
+              Expanded(
+                child: navigationShell,
+              ),
+            ],
+          );
+        },
       ),
     );
   }

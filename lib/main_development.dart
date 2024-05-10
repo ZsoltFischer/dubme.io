@@ -1,4 +1,4 @@
-import 'package:dubmeio/app/app.dart';
+import 'package:dubmeio/app/todo_app.dart';
 import 'package:dubmeio/bootstrap.dart';
 
 void main() {
