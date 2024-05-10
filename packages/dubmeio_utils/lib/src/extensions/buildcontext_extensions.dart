@@ -1,7 +1,7 @@
 import 'package:dubmeio_utils/src/constants/breakpoints.dart';
 import 'package:flutter/widgets.dart';
 
-/// Shorthands for a set of breakpoints that can be used to build responsive UIs.
+/// Shorthands for a set of breakpoints that can be used to build responsive UIs
 extension BreakPoints on BuildContext {
   /// Returns `true` if the shortest side of the device is `>= 600`.
   bool get isTablet =>

@@ -9,8 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class TodoInputField extends StatelessWidget {
   /// Creates a [TodoInputField].
   const TodoInputField({
-    super.key,
     required TextEditingController controller,
+    super.key,
   }) : _controller = controller;
 
   final TextEditingController _controller;
