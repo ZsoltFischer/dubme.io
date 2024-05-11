@@ -6,3 +6,12 @@ The TODOs BLoC and TODO handling is greatly simplified compared to the example a
 My widget knowledge is showcased with a moderately complex Sliver layout (<code>SliverPinnedHeaderSection</code>)
 
 Tests are missing!
+
+## Structure:
+
+* TODO App
+* dubmeio_utils: A collection of useful utilities that can be used in future projects
+* dubmeio_widgets: General UI lib for the company for speeding up future app development. Contains:
+    * Brand-specific theme
+    * Routing implementation for screens that every application has. (auth, splash, etc.)
+    * Layout skeletons for things that are a pain to make twice. 
